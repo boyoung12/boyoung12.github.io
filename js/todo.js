@@ -7,6 +7,8 @@ let toDos = [];
 function handleDelted(event) {
 	const bydel = event.target.parentElement;
 	bydel.remove();
+	toDos = toDos.filter((toDo) => toDo.id !== parseInt(bydel.id));
+	saveTodo();
 }
 
 function saveTodo(){
@@ -17,15 +19,19 @@ function saveTodo(){
 function handleTodo(event){
 	event.preventDefault();
 	const byToVal = byToInput.value;
-	localStorage.setItem("todo", byToVal);
 	byToInput.value = "";
-	toDos.push(byToVal);
-	PaintTodo(byToVal);
+	const newToDoObj = {
+		text: byToVal,
+		id: Date.now(),
+	};
+	toDos.push(newToDoObj);
+	PaintTodo(newToDoObj);
 	saveTodo();
 }
 
 function PaintTodo(newTodo){
 	const toLi = document.createElement("li");
+	toLi.id = newTodo.id;
 	const toSpan = document.createElement("span");
 	const toButton = document.createElement("button");
 	
@@ -33,7 +39,7 @@ function PaintTodo(newTodo){
 	toLi.appendChild(toButton);
 	byToUl.appendChild(toLi);
 	
-	toSpan.innerText = newTodo;
+	toSpan.innerText = newTodo.text;
 	toButton.innerText = "❌";
 	toButton.addEventListener("click", handleDelted);
 }

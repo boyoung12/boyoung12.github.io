@@ -11,6 +11,18 @@ body {
 	margin:20px;
 }
 
+.byHead input {
+	font-size:16px;
+}
+
+.byHead input::placeholder {
+	font-size:16px;
+}
+
+.byHead i {
+	color:white;
+}
+
 .hidden {
 	display: none;
 }
@@ -34,9 +46,9 @@ main {
 }
 
 #byName input {
-	padding:10px;
+	padding:20px;
 	font-size: 30px;
-	margin:20px;
+	margin:20px 0px;
 }
 
 #byName h3 {
@@ -54,8 +66,6 @@ input {
 
 input::placeholder {
 	color:white;
-	font-style:'Jua', sans-serif;
-	
 }
 
 input:focus{outline:none;}
@@ -114,4 +124,16 @@ footer {
 	margin-top:200px;
 	font-size: 20px;
 	color:white;
+}
+
+#bgimg {
+  top: 0;
+  right: 0;
+  object-fit: fill;
+  overflow: hidden;
+  z-index: -1;
+  height: 100%;
+  width: 100%;
+  position: fixed;
+   
 }
